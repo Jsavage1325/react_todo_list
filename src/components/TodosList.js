@@ -1,8 +1,9 @@
 import React from "react"
 import TodoItem from "./TodoItem";
 
-function TodosList(props) {
-    const { todos } = props
+class TodosList extends React.Component {
+    render(){
+    const { todos } = this.props
     return (
         <React.Fragment>
         <ul>
@@ -10,13 +11,14 @@ function TodosList(props) {
             <TodoItem 
               key={todo.id} 
               todo={todo}
-              handleChangeProps={props.handleChangeProps}
-              deleteTodoProps={props.deleteTodoProps}
-              handleEditing={props.handleEditing}
+              handleChangeProps={this.props.handleChangeProps}
+              deleteTodoProps={this.props.deleteTodoProps}
+              setUpdate={this.props.setUpdate}
             />
             ))}
         </ul>
         </React.Fragment>
       )
+    }
 }
 export default TodosList

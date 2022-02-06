@@ -63,9 +63,18 @@ class TodoContainer extends React.Component {
     });
   };
 
-  handleEditing = () => {
-    console.log("edit mode activated")
+  setUpdate = (updatedTitle, id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.title = updatedTitle
+        }
+        return todo
+      }),
+    })
   }
+
+  
 
   render() {
     return (
@@ -78,7 +87,7 @@ class TodoContainer extends React.Component {
           todos={this.state.todos} 
           handleChangeProps={this.handleChange} 
           deleteTodoProps={this.deleteTodo}
-          handleEditing={this.handleEditing}
+          setUpdate={this.setUpdate}
           />
         </div>
       </div>
